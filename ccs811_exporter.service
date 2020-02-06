@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus exporter for ccs811 air quality sensor
+Documentation=https://github.com/pkesso/ccs811_exporter
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+SyslogIdentifier=ccs811_exporter
+WorkingDirectory=/opt/ccs811_exporter
+ExecStart=/opt/ccs811_exporter/bin/python3 ccs811_exporter.py  
+KillSignal=SIGINT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
